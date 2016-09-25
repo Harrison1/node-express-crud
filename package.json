@@ -1,0 +1,19 @@
+{
+  "name": "node-express-crud",
+  "version": "1.0.0",
+  "description": "contact crud app using node, express, mongo, mongoose, and swig",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Harrison McGuire",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.6.1",
+    "nodemon": "^1.10.2",
+    "swig": "^1.4.2"
+  }
+}
