@@ -27,16 +27,12 @@
     <tbody>
     {% for hero in superheros %}
     <tr >
-
         <td class="text-center">{{hero.name}}</td>
         <td class="text-center">{{hero.power}}</td>
         <td class="text-center">{{hero.email}}</td>
         <td class="text-center">{{hero.phone}}</td>
         <td class="text-center"><a href="/superheros/{{hero.url}}">view</a></td>
         <td class="text-center"><a href="/superheros/{{hero.url}}/delete">delete</a></td>
-<!--         <td><center><a href = "customers/{{customer.id}}/edit" class="btn btn-info"><span class="glyphicon glyphicon-pencil"></span>&nbsp;&nbsp;Edit&nbsp;&nbsp;</a>
-            <a href = "customers/{{customer.id}}" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</a></center></td>
-    </tr> -->
     {% endfor %}
     </tbody>
 </table>
