@@ -12,7 +12,7 @@ router.use((req, res, next) => {
 router.get('/', (req, res) => {
 	Superhero.find((err, data) => {
 		swig.invalidateCache();
-		(err) ? res.send(err) : res.render('index.html', {superheros: data});
+		(err) ? res.send(err) : res.render('index.hbs', {superheros: data});
 	});
 });
 
@@ -32,7 +32,10 @@ router.route('/superheros').post((req, res) => {
 router.route('/superheros/:url').get((req, res) => {
 	const query = {"url": req.params.url.toLowerCase()};
 	Superhero.findOne(query, (err, data) => {
-		(err) ? res.send(err) : res.render('./app/views/profile.html', {superhero: data});
+		// (err) ? res.send(err) : res.render('./app/views/profile', {superhero: data});
+
+		//hbs
+		(err) ? res.send(err) : res.render('profile', {superhero: data});
 	});	
 }).post((req, res) => {
 	const query = {"url": req.params.url.toLowerCase()};
@@ -48,7 +51,10 @@ router.route('/superheros/:url/edit').get((req, res) => {
 	swig.invalidateCache();
 	const query = {"url": req.params.url.toLowerCase()};
 	Superhero.findOne(query, (err, data) => {
-		(err) ? res.send(err) : res.render('./app/views/edit.html', {superhero: data});
+		// (err) ? res.send(err) : res.render('./app/views/edit.html', {superhero: data});
+
+		// hbs
+		(err) ? res.send(err) : res.render('edit', {superhero: data});
 	});	
 });
 

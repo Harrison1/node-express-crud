@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY Swig Contact APP</title>
+</head>
+<body>
+<h1>{{superhero.name}}</h1>
+
+<form action="/superheros/{{superhero.url}}" method="POST">
+  <input type="text" value="{{superhero.name}}" placeholder="name" name="name">
+  <input type="text" value="{{superhero.power}}" placeholder="power" name="power">
+  <input type="text" value="{{superhero.email}}" placeholder="email" name="email">
+  <input type="text" value="{{superhero.phone}}" placeholder="phone" name="phone">
+  <button type="submit">Update</button>
+</form>
+
+</body>
+</html>
