@@ -39,4 +39,4 @@ jspm_packages
 #server file
 server.js
 server-g.js
-server-h.js
+dbconfig.js
