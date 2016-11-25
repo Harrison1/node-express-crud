@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MY Contact App</title>
+</head>
+<body>
+<h1>Hello Contacts App and Superheros</h1>
+<form action="/superheros" method="POST">
+  <input type="text" placeholder="name" name="name">
+  <input type="text" placeholder="power" name="power">
+  <input type="text" placeholder="email" name="email">
+  <input type="text" placeholder="phone" name="phone">
+  <button type="submit">Submit</button>
+</form>
+
+<table class="table table-bordered ">
+    <thead>
+    <tr>
+        <th class="text-center">Name</th>
+        <th class="text-center">Power</th>
+        <th class="text-center">Email</th>
+        <th class="text-center">Phone</th>
+    </tr>
+
+    </thead>
+    <tbody>
+    {{#each superheros}}
+    <tr >
+        <td class="text-center">{{this.name}}</td>
+        <td class="text-center">{{this.power}}</td>
+        <td class="text-center">{{this.email}}</td>
+        <td class="text-center">{{this.phone}}</td>
+        <td class="text-center"><a href="/superheros/{{this.url}}">view</a></td>
+        <td class="text-center"><a href="/superheros/{{this.url}}/delete">delete</a></td>
+   {{/each}}
+    </tbody>
+</table>
+
+
+</body>
+</html>

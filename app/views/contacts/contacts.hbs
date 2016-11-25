@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Node Authentication</title>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+</head>
+<body>
+<div class="container">
+
+	<div class="page-header text-center">
+		<h1><span class="fa fa-anchor"></span> Contact Page</h1>
+		<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+	</div>
+
+	<form action="/contacts" method="POST">
+  		<input type="text" placeholder="name" name="name">
+  		<input type="text" placeholder="number" name="number">
+  		<input type="text" placeholder="email" name="email">
+  		<input type="text" placeholder="address" name="address">
+  		<button type="submit">Submit</button>
+	</form>
+
+	<hr />
+
+	<!-- LOCAL INFORMATION -->
+<!-- 	<div class="row">
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> Local</h3>
+					<p>
+						<strong>id</strong>: {{user._id}}<br>
+						<strong>email</strong>: {{user.username}}<br>
+						<strong>password</strong>: {{user.password}}<br>
+						<strong>role</strong>: {{user.role}}
+					</p>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="row">
+		{{#each user.contacts}}
+		<div class="col-sm-6">
+			<div class="well">
+				<h3><span class="fa fa-user"></span> Local</h3>
+					<p>
+						<strong>id</strong>: {{this._id}}<br>
+						<strong>name</strong>: {{this.name}}<br>
+						<strong>number</strong>: {{this.number}}<br>
+						<strong>address</strong>: {{this.address}}<br>
+						<strong>email</strong>: {{this.email}}
+					</p>
+
+					<button data-toggle="modal" data-target="#myModal" class="btn btn-success btn-lg" data-id="{{this._id}}" data-name="{{this.name}}" data-number="{{this.number}}" data-email="{{this.email}}" data-address="{{this.address}}">Edit</button>  <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-lg" data-id="{{this._id}}">Delete</button>
+			</div>
+		</div>
+		{{/each}}
+	</div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+          <!-- Modal content-->
+      <div class="modal-content">
+		      <!-- Modal content-->
+			<h2>Update</h2>
+			<form id="updateform" action="" method="POST">
+			  <input type="text" placeholder="name" name="name">
+			  <input type="text" placeholder="number" name="number">
+			  <input type="text" placeholder="email" name="email">
+			  <input type="text" placeholder="address" name="address">
+			  <button type="submit">Update</button>
+			</form>
+      </div>
+    
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+
+      <div class="modal fade" id="deleteModal" role="dialog">
+    <div class="modal-dialog">
+
+          <!-- Modal content-->
+      <div class="modal-content">
+		      <!-- Modal content-->
+			<h2>Delete This</h2>
+			<a id="delete-link" href="/">DELETE</a>
+      </div>
+    
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <script>
+      $('#myModal').on('show.bs.modal', function(e) {
+      	var id = $(e.relatedTarget).data('id');
+        var name = $(e.relatedTarget).data('name');
+        var number = $(e.relatedTarget).data('number');
+        var email = $(e.relatedTarget).data('email');
+        var address = $(e.relatedTarget).data('address');
+
+        $(e.currentTarget).find('#updateform').attr("action", "/contacts/" + id + "/update");
+        $(e.currentTarget).find('input[name="name"]').val(name);
+        $(e.currentTarget).find('input[name="number"]').val(number);
+        $(e.currentTarget).find('input[name="email"]').val(email);
+        $(e.currentTarget).find('input[name="address"]').val(address);
+    });
+
+    $('#deleteModal').on('show.bs.modal', function(e) {
+      	var id = $(e.relatedTarget).data('id');
+
+      	console.log(id);
+
+        $(e.currentTarget).find('#delete-link').attr("href", "/contacts/" + id + "/delete");
+
+    });
+  </script>
+</body>
+</html>

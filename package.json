@@ -10,14 +10,19 @@
   "author": "Harrison McGuire",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
-    "consolidate": "^0.14.1",
-    "ejs": "^2.5.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.14.2",
     "mongoose": "^4.6.1",
     "nodemon": "^1.10.2",
-    "swig": "^1.4.2",
-    "underscore": "^1.8.3"
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "webpack": "^1.13.3"
   }
 }
