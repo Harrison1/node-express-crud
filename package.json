@@ -5,11 +5,14 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "webpack && nodemon server"
   },
   "author": "Harrison McGuire",
   "license": "MIT",
   "dependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "^6.2.8",
+    "babel-preset-es2015": "^6.18.0",
     "bcrypt": "^0.8.7",
     "body-parser": "^1.15.2",
     "connect-flash": "^0.1.1",
@@ -17,6 +20,7 @@
     "express": "^4.14.0",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.14.2",
+    "html-webpack-plugin": "^2.24.1",
     "mongoose": "^4.6.1",
     "nodemon": "^1.10.2",
     "passport": "^0.3.2",

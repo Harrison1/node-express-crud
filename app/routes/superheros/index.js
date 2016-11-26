@@ -16,9 +16,6 @@ router.route('/all').get(isAuthenticated, (req, res) => {
 	Superhero.find((err, data) => {
 		res.render('superheros/all', {superheros: data});
 	})
-	.then(function(data) {
-		console.log(data);
-	})
 	.catch(function(err) {
 		console.log(err);
 	});
